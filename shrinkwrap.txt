@@ -1,0 +1,37 @@
+Shrinkwrap
+
+A key to successful verification of safety properties on large
+designs using SMT model checking is to
+strengthen the invariants to make properties that are
+k-inductive, purely inductive (k = 1).
+This requires the user to declare abstractions of the
+reachable state of the design.  A state invariant
+that is too abstract (i.e. includes too much unreachable state)
+will likely fail to be useful lemmas because it includes unreachable
+states that transition to violation states.
+But highly accurate state invariants are often too time consuming to 
+construct or may introduce too much complexity to the underlying SMT problem.
+
+The idea of shrinkwrap is to "wrap" the design with an overly abstract
+reachable state invariant, then by some automatic process, slowly shrink
+the wrap until the properties of interest start passing.
+
+This process can also begin in the background before any properties are specified;
+the process keeps shrinking the state invariant until it fails.
+
+An obvious approach is to automatically identify FSM control elements, such as
+state flags (bools), state variables (enumerations), and timer counters,
+then construct the invariants for these state variables.
+
+Another element of this verification system is
+to provide users with trimmed down counter examples (states) that only
+displays state variables pertinent to the failing property.
+
+Q: Is displaying a state enough, or do counter examples need to display
+traces?  Can traces be intelligently trimmed down, e.g. just showing a 
+transition from one high level state to another without showing the details
+such as a counter incrementing?
+
+Q: Can this be applied to liveness properties somehow?
+
+

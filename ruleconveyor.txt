@@ -1,0 +1,6 @@
+Rule Conveyor
+
+Q: How useful is this paradigm for hardware or embedded software?
+Q: Can this be synthesized to hardware?
+Q: Can this be synthesized for deterministic software execution?
+
